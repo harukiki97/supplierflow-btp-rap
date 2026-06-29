@@ -1,0 +1,4 @@
+legacySupplierId,supplierId,companyName,country,taxNumber,paymentTerms,reconciliationAccount,purchasingOrg,riskScore
+L-10001,SUP-10001,Hankook Precision Parts,KR,KR-101-88-12345,Z030,210000,KR01,42
+L-10002,SUP-10002,Global Mobility Components,US,US-98-7654321,NT30,211000,US01,65
+L-10003,SUP-10003,Seoul Battery Materials,KR,KR-220-45-98765,Z060,210000,KR02,78

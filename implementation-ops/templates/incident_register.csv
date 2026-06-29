@@ -1,0 +1,3 @@
+incidentId,openedAt,severity,module,summary,status,owner,resolution
+INC-0001,2026-06-29T09:30:00+09:00,P2,MM/FI,Supplier sync failed because payment terms code was inactive,Closed,Operations Admin,Corrected paymentTerms and retried sync
+INC-0002,2026-06-29T10:10:00+09:00,P3,Security,Approver could not access supplier request object page,Open,Security Lead,Role collection assignment under review

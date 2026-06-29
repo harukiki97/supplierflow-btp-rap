@@ -8,6 +8,7 @@
     "start": "cds serve --port 4004",
     "watch": "cds watch",
     "mock-erp": "node mock-erp/server.js",
+    "ops:check": "node scripts/ops-readiness-check.js",
     "test": "node --test",
     "test:watch": "node --test --watch"
   },
