@@ -155,6 +155,7 @@ test/                비즈니스 규칙과 Adapter 테스트
 ```bash
 npm install
 copy .env.example .env
+npm run deploy
 npm run mock-erp
 ```
 

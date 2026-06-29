@@ -7,6 +7,7 @@
   "scripts": {
     "start": "cds serve --port 4004",
     "watch": "cds watch",
+    "deploy": "cds deploy --to sqlite:db.sqlite",
     "mock-erp": "node mock-erp/server.js",
     "ops:check": "node scripts/ops-readiness-check.js",
     "test": "node --test",
