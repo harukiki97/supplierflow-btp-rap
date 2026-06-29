@@ -44,6 +44,32 @@ flowchart LR
   ERP --> CAP
 ```
 
+## Demo Screenshots
+
+### Fiori List Report
+
+협력사 등록 요청을 Fiori elements List Report에서 조회하는 화면입니다.
+
+![Fiori List Report](docs/screenshots/02-fiori-list-report.png)
+
+### CAP Service Home
+
+CAP 서버에서 제공하는 OData 서비스 엔드포인트와 Fiori preview 진입점을 확인할 수 있습니다.
+
+![CAP Service Home](docs/screenshots/01-cap-service-home.png)
+
+### OData SupplierRequests Response
+
+`SupplierRequests` 엔티티의 OData V4 응답 예시입니다.
+
+![OData SupplierRequests Response](docs/screenshots/03-odata-supplier-requests.png)
+
+### Operations Readiness Check
+
+SAP ERP 구축·운영 연계 확장 범위에서 마이그레이션 필수값, Cutover, 운영 Runbook 준비 상태를 점검한 화면입니다.
+
+![Operations Readiness Check](docs/screenshots/04-ops-readiness-check.png)
+
 ## 기술 구성
 
 | 영역 | 사용 기술 |
