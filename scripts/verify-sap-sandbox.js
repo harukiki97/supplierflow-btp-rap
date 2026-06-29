@@ -16,7 +16,7 @@ async function main() {
   const baseUrl = process.env.SAP_API_BASE_URL;
   const apiKey = process.env.SAP_API_KEY;
 
-  if (!baseUrl || !apiKey || apiKey === 'replace-with-local-secret') {
+  if (!baseUrl || !apiKey || isPlaceholderApiKey(apiKey)) {
     console.error('SAP Sandbox verification skipped.');
     console.error('Required local .env values: SAP_API_BASE_URL and SAP_API_KEY.');
     console.error('Do not commit the API key. Add it only to your local .env file.');
@@ -104,6 +104,13 @@ async function parseBody(response) {
       raw: text.slice(0, 500)
     };
   }
+}
+
+function isPlaceholderApiKey(apiKey) {
+  return [
+    'replace-with-local-secret',
+    'PASTE_YOUR_SAP_BUSINESS_ACCELERATOR_HUB_API_KEY_HERE'
+  ].includes(apiKey);
 }
 
 function redactEndpoint(url) {
