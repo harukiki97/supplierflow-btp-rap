@@ -4,6 +4,8 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 
 const {
+  buildSapBusinessPartnerUrl,
+  readBusinessPartners,
   readMockBusinessPartners,
   mapSapBusinessPartner
 } = require('../srv/lib/sap-bp-adapter');
@@ -44,6 +46,61 @@ test('SAP BP response mapper handles nested address data', () => {
     score: 70,
     source: 'SAP_SANDBOX'
   });
+});
+
+test('SAP BP sandbox URL keeps the Business Accelerator Hub base path', async () => {
+  const url = buildSapBusinessPartnerUrl('https://sandbox.api.sap.com/s4hanacloud');
+
+  assert.equal(
+    url.origin + url.pathname,
+    'https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner'
+  );
+});
+
+test('SAP BP adapter can call sandbox mode with injected credentials', async () => {
+  let requestedUrl;
+  let requestedApiKey;
+  const fetchImpl = async (url, options) => {
+    requestedUrl = String(url);
+    requestedApiKey = options.headers.APIKey;
+    return new Response(JSON.stringify({
+      value: [
+        {
+          BusinessPartner: '100000999',
+          BusinessPartnerFullName: 'Sandbox Supplier'
+        }
+      ]
+    }), {
+      status: 200,
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  };
+
+  const result = await readBusinessPartners(
+    { companyName: 'Sandbox Supplier' },
+    {
+      mode: 'sap_sandbox',
+      baseUrl: 'https://sandbox.api.sap.com/s4hanacloud',
+      apiKey: 'secret-key',
+      fetchImpl
+    }
+  );
+
+  assert.match(requestedUrl, /^https:\/\/sandbox\.api\.sap\.com\/s4hanacloud\/sap\/opu\/odata\/sap\/API_BUSINESS_PARTNER/);
+  assert.equal(requestedApiKey, 'secret-key');
+  assert.deepEqual(result, [
+    {
+      sapBpId: '100000999',
+      name: 'Sandbox Supplier',
+      country: undefined,
+      city: undefined,
+      street: undefined,
+      score: 70,
+      source: 'SAP_SANDBOX'
+    }
+  ]);
 });
 
 test('mock ERP client returns business partner id on success', async () => {

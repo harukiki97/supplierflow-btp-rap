@@ -11,6 +11,14 @@
 
 The project includes code paths for SAP Sandbox-style Business Partner lookup, but API keys and tenant-specific values are not committed. Without those credentials, the repository should be described as **SAP Business Partner API adapter-ready**, not as a completed live SAP Sandbox verification.
 
+Once local credentials are configured, run:
+
+```bash
+npm run sap:sandbox:verify
+```
+
+On success, the script writes redacted evidence files under `docs/evidence/generated/`.
+
 ## Intended API
 
 | Field | Value |
@@ -31,12 +39,11 @@ SAP_API_KEY=<not committed>
 
 ## Verification Procedure
 
-1. Set `ERP_READ_MODE=sap_sandbox`.
-2. Configure `SAP_API_BASE_URL` and `SAP_API_KEY` in `.env`.
-3. Start the CAP service with `npm run watch`.
-4. Trigger `checkDuplicates` for a supplier request.
-5. Confirm the SAP response is mapped to `DuplicateCandidatePayload`.
-6. Store only masked response samples or screenshots. Never commit API keys.
+1. Configure `SAP_API_BASE_URL` and `SAP_API_KEY` in `.env`.
+2. Run `npm run sap:sandbox:verify`.
+3. Confirm HTTP status `200`.
+4. Confirm response rows are mapped to `DuplicateCandidatePayload` fields.
+5. Commit only generated redacted evidence files. Never commit API keys.
 
 ## Result Template
 

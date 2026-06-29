@@ -22,10 +22,10 @@ SAP BTP CAP과 Fiori elements를 이용한 협력사 등록·승인 및 S/4HANA 
 | 영역 | 현재 상태 | 증빙 |
 | --- | --- | --- |
 | CAP/OData/Fiori 로컬 실행 | 검증 완료 | `docs/screenshots/`, `docs/evidence/execution-evidence.md` |
-| 자동 테스트 | 검증 완료 | `npm test` 16개 통과 |
+| 자동 테스트 | 검증 완료 | `npm test` 18개 통과 |
 | 운영 readiness 점검 | 검증 완료 | `npm run ops:check`, `docs/screenshots/04-ops-readiness-check.png` |
 | SAP Business Partner 조회 | Adapter 구현 및 mock 검증 완료 | `srv/lib/sap-bp-adapter.js`, `docs/evidence/sap-sandbox-verification.md` |
-| 실제 SAP Sandbox 호출 | 외부 API Key 필요, repo 증빙 미포함 | `docs/evidence/sap-sandbox-verification.md` |
+| 실제 SAP Sandbox 호출 | 외부 API Key 필요, `npm run sap:sandbox:verify`로 검증 가능 | `docs/evidence/sap-sandbox-verification.md` |
 | ABAP RAP | 설계/코드 산출물 포함, ADT 활성화 증빙 미포함 | `abap-rap/`, `docs/evidence/rap-scope.md` |
 | 실제 S/4HANA 쓰기 | Mock ERP로 대체 | `mock-erp/`, Integration Log 처리 |
 
@@ -218,6 +218,13 @@ npm run ops:check
 - 마이그레이션 필수값 검증
 - Go-Live readiness blocker/warning 판정
 - source/target migration reconciliation
+- SAP Sandbox Business Partner API credential-based verification script
+
+SAP Sandbox API Key가 있는 경우에는 로컬 `.env` 설정 후 다음 명령으로 실제 조회 증빙을 생성할 수 있습니다.
+
+```bash
+npm run sap:sandbox:verify
+```
 
 ## Demo Flow
 

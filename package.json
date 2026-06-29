@@ -10,6 +10,7 @@
     "deploy": "cds deploy --to sqlite:db.sqlite",
     "mock-erp": "node mock-erp/server.js",
     "ops:check": "node scripts/ops-readiness-check.js",
+    "sap:sandbox:verify": "node scripts/verify-sap-sandbox.js",
     "test": "node --test",
     "test:watch": "node --test --watch"
   },

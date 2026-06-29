@@ -12,7 +12,7 @@ Last verified: 2026-06-29
 | CAP service home | `docs/screenshots/01-cap-service-home.png` | OData endpoints and Fiori preview links visible |
 | OData response | `docs/screenshots/03-odata-supplier-requests.png` | `SupplierRequests` response mapped through CAP |
 | Operations readiness | `npm run ops:check` | `ready: true`, `blocked: []`, `warnings: []` |
-| Automated tests | `npm test` | 16 tests passed |
+| Automated tests | `npm test` | 18 tests passed |
 
 ## Test Coverage Summary
 
@@ -24,6 +24,7 @@ The automated tests cover the business rules that are most important for an ERP 
 - HTTP 4xx vs 5xx/timeout error classification
 - Stable idempotency key generation
 - SAP Business Partner adapter response mapping
+- SAP Sandbox base URL preservation and credential-injected adapter call
 - Mock ERP client success and failure handling
 - Migration required field validation
 - Go-live readiness blocker and warning evaluation

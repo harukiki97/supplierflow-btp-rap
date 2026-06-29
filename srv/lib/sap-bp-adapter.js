@@ -82,10 +82,7 @@ async function readBusinessPartners(criteria, options = {}) {
     throw error;
   }
 
-  const url = new URL('/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner', baseUrl);
-  url.searchParams.set('$top', '10');
-  url.searchParams.set('$format', 'json');
-  url.searchParams.set('$select', 'BusinessPartner,BusinessPartnerFullName,OrganizationBPName1,SearchTerm1');
+  const url = buildSapBusinessPartnerUrl(baseUrl);
 
   const response = await fetchImpl(url, {
     headers: {
@@ -106,8 +103,20 @@ async function readBusinessPartners(criteria, options = {}) {
   return rows.map(mapSapBusinessPartner);
 }
 
+function buildSapBusinessPartnerUrl(baseUrl) {
+  const normalizedBaseUrl = String(baseUrl).endsWith('/')
+    ? String(baseUrl)
+    : `${baseUrl}/`;
+  const url = new URL('sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner', normalizedBaseUrl);
+  url.searchParams.set('$top', '10');
+  url.searchParams.set('$format', 'json');
+  url.searchParams.set('$select', 'BusinessPartner,BusinessPartnerFullName,OrganizationBPName1,SearchTerm1');
+  return url;
+}
+
 module.exports = {
   readBusinessPartners,
   readMockBusinessPartners,
-  mapSapBusinessPartner
+  mapSapBusinessPartner,
+  buildSapBusinessPartnerUrl
 };
