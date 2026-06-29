@@ -11,6 +11,7 @@ Last verified: 2026-06-29
 | Fiori preview | `docs/screenshots/02-fiori-list-report.png` | Supplier request list rendered with sample rows |
 | CAP service home | `docs/screenshots/01-cap-service-home.png` | OData endpoints and Fiori preview links visible |
 | OData response | `docs/screenshots/03-odata-supplier-requests.png` | `SupplierRequests` response mapped through CAP |
+| SAP Sandbox API | `npm run sap:sandbox:verify` | HTTP 200, 3 Business Partner rows mapped |
 | Operations readiness | `npm run ops:check` | `ready: true`, `blocked: []`, `warnings: []` |
 | Automated tests | `npm test` | 18 tests passed |
 
@@ -37,6 +38,8 @@ The automated tests cover the business rules that are most important for an ERP 
 - `docs/screenshots/02-fiori-list-report.png`
 - `docs/screenshots/03-odata-supplier-requests.png`
 - `docs/screenshots/04-ops-readiness-check.png`
+- `docs/evidence/generated/sap-sandbox-result.md`
+- `docs/evidence/generated/sap-sandbox-result.json`
 
 ## Boundaries
 

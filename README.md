@@ -9,7 +9,7 @@ SAP BTP CAP과 Fiori elements를 이용한 협력사 등록·승인 및 S/4HANA 
 - **ABAP RAP**: 승인 규칙 마스터 설계 및 코드 산출물
 - **Test**: 상태 전이, 멱등성, 오류 분류, Adapter, 운영 readiness 검증
 
-[Demo GIF](docs/screenshots/supplierflow-demo.gif) · [Architecture](docs/architecture.md) · [Execution Evidence](docs/evidence/execution-evidence.md) · [SAP Sandbox Notes](docs/evidence/sap-sandbox-verification.md) · [RAP Scope](docs/evidence/rap-scope.md)
+[Demo GIF](docs/screenshots/supplierflow-demo.gif) · [Architecture](docs/architecture.md) · [Execution Evidence](docs/evidence/execution-evidence.md) · [SAP Sandbox Evidence](docs/evidence/generated/sap-sandbox-result.md) · [RAP Scope](docs/evidence/rap-scope.md)
 
 ![SupplierFlow Demo](docs/screenshots/supplierflow-demo.gif)
 
@@ -25,7 +25,7 @@ SAP BTP CAP과 Fiori elements를 이용한 협력사 등록·승인 및 S/4HANA 
 | 자동 테스트 | 검증 완료 | `npm test` 18개 통과 |
 | 운영 readiness 점검 | 검증 완료 | `npm run ops:check`, `docs/screenshots/04-ops-readiness-check.png` |
 | SAP Business Partner 조회 | Adapter 구현 및 mock 검증 완료 | `srv/lib/sap-bp-adapter.js`, `docs/evidence/sap-sandbox-verification.md` |
-| 실제 SAP Sandbox 호출 | 외부 API Key 필요, `npm run sap:sandbox:verify`로 검증 가능 | `docs/evidence/sap-sandbox-verification.md` |
+| 실제 SAP Sandbox 호출 | 검증 완료, HTTP 200, 3건 조회 | `docs/evidence/generated/sap-sandbox-result.md` |
 | ABAP RAP | 설계/코드 산출물 포함, ADT 활성화 증빙 미포함 | `abap-rap/`, `docs/evidence/rap-scope.md` |
 | 실제 S/4HANA 쓰기 | Mock ERP로 대체 | `mock-erp/`, Integration Log 처리 |
 
@@ -220,7 +220,7 @@ npm run ops:check
 - source/target migration reconciliation
 - SAP Sandbox Business Partner API credential-based verification script
 
-SAP Sandbox API Key가 있는 경우에는 로컬 `.env` 설정 후 다음 명령으로 실제 조회 증빙을 생성할 수 있습니다.
+SAP Sandbox API Key가 있는 경우에는 로컬 `.env` 설정 후 다음 명령으로 실제 조회 증빙을 갱신할 수 있습니다.
 
 ```bash
 npm run sap:sandbox:verify

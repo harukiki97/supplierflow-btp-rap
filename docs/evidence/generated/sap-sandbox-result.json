@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-06-29T08:00:28.782Z",
+  "api": "API_BUSINESS_PARTNER",
+  "entity": "A_BusinessPartner",
+  "method": "GET",
+  "endpoint": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner?%24expand=to_BusinessPartnerAddress&%24format=json&%24select=BusinessPartner%2CBusinessPartnerFullName%2COrganizationBPName1%2CSearchTerm1&%24top=3",
+  "httpStatus": 200,
+  "ok": true,
+  "rowCount": 3,
+  "mappedCandidates": [
+    {
+      "sapBpId": "11",
+      "name": "Cust15 Cust15",
+      "score": 70,
+      "source": "SAP_SANDBOX"
+    },
+    {
+      "sapBpId": "202",
+      "name": "Nue tech inc",
+      "score": 70,
+      "source": "SAP_SANDBOX"
+    },
+    {
+      "sapBpId": "203",
+      "name": "Expo technologies Plc",
+      "score": 70,
+      "source": "SAP_SANDBOX"
+    }
+  ],
+  "note": "API key is loaded from local .env and is never written to evidence output."
+}

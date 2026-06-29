@@ -6,10 +6,10 @@
 | --- | --- |
 | SAP Business Partner GET adapter | Implemented |
 | Mock candidate lookup | Verified locally |
-| Live SAP Sandbox API call evidence | Not included in this repository |
+| Live SAP Sandbox API call evidence | Verified, see `generated/sap-sandbox-result.md` |
 | S/4HANA Business Partner write | Mock ERP only |
 
-The project includes code paths for SAP Sandbox-style Business Partner lookup, but API keys and tenant-specific values are not committed. Without those credentials, the repository should be described as **SAP Business Partner API adapter-ready**, not as a completed live SAP Sandbox verification.
+The project includes code paths for SAP Sandbox-style Business Partner lookup. API keys and tenant-specific values are not committed. The generated evidence files include only the endpoint, HTTP status, row count, and mapped candidate results.
 
 Once local credentials are configured, run:
 
@@ -45,11 +45,11 @@ SAP_API_KEY=<not committed>
 4. Confirm response rows are mapped to `DuplicateCandidatePayload` fields.
 5. Commit only generated redacted evidence files. Never commit API keys.
 
-## Result Template
+## Verification Result
 
 | Date | API | HTTP Status | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Pending | `API_BUSINESS_PARTNER/A_BusinessPartner` | Pending | Pending credential-based verification | Pending |
+| 2026-06-29 | `API_BUSINESS_PARTNER/A_BusinessPartner` | 200 | 3 rows mapped to duplicate candidate shape | `generated/sap-sandbox-result.md` |
 
 ## Portfolio Wording
 
