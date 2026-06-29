@@ -1,0 +1,115 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "supplierflow.requests",
+    "type": "application",
+    "title": "Supplier Requests",
+    "description": "Supplier onboarding approval cockpit",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/supplier/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "annotations": [
+            "localAnnotations"
+          ]
+        }
+      },
+      "localAnnotations": {
+        "uri": "annotations/annotation.xml",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://supplier"
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.fe.templates": {},
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "SupplierRequestsList",
+          "target": "SupplierRequestsList"
+        },
+        {
+          "pattern": "SupplierRequests({key}):?query:",
+          "name": "SupplierRequestsObjectPage",
+          "target": "SupplierRequestsObjectPage"
+        }
+      ],
+      "targets": {
+        "SupplierRequestsList": {
+          "type": "Component",
+          "id": "SupplierRequestsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "SupplierRequests",
+              "variantManagement": "Page",
+              "navigation": {
+                "SupplierRequests": {
+                  "detail": {
+                    "route": "SupplierRequestsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "SupplierRequestsObjectPage": {
+          "type": "Component",
+          "id": "SupplierRequestsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "SupplierRequests"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

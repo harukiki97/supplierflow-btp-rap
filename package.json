@@ -1,0 +1,39 @@
+{
+  "name": "supplierflow-btp-rap",
+  "version": "1.0.0",
+  "description": "SAP BTP CAP + ABAP RAP portfolio project for supplier onboarding, approval, and ERP sync simulation.",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "cds serve --port 4004",
+    "watch": "cds watch",
+    "mock-erp": "node mock-erp/server.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "dependencies": {
+    "@cap-js/sqlite": "2.4.0",
+    "@sap/cds": "9.9.1",
+    "dotenv": "17.4.2",
+    "express": "5.2.1"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "9.9.3"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db.sqlite"
+        }
+      }
+    },
+    "odata": {
+      "version": "v4"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

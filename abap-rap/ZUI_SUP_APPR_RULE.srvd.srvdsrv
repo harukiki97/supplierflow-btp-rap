@@ -1,0 +1,4 @@
+@EndUserText.label: 'Supplier Approval Rule Service'
+define service ZUI_SUP_APPR_RULE {
+  expose ZC_SupApprRule as ApprovalRules;
+}

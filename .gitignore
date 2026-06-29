@@ -1,0 +1,10 @@
+node_modules/
+db.sqlite
+db.sqlite-*
+gen/
+dist/
+coverage/
+.env
+.cds-services.json
+*.log
+.runtime/

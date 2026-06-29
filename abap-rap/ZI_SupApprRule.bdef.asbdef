@@ -1,0 +1,36 @@
+managed implementation in class zbp_i_supapprrule unique;
+strict ( 2 );
+
+define behavior for ZI_SupApprRule alias Rule
+persistent table zsup_appr_rule
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly ) RuleUUID, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, ReviewLevel;
+  field ( mandatory ) Country, SupplierType, RiskThreshold;
+
+  validation validateRiskThreshold on save { field RiskThreshold; }
+  validation validateDuplicateActive on save { field Country, SupplierType, IsActive; }
+  determination determineReviewLevel on modify { field RiskThreshold; }
+
+  action activate result [1] $self;
+
+  mapping for zsup_appr_rule
+  {
+    RuleUUID      = rule_uuid;
+    Country       = country;
+    SupplierType  = supplier_type;
+    RiskThreshold = risk_threshold;
+    ReviewLevel   = review_level;
+    IsActive      = is_active;
+    CreatedBy     = created_by;
+    CreatedAt     = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+  }
+}
