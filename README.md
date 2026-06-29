@@ -1,10 +1,33 @@
 # SupplierFlow BTP + RAP
 
-SAP BTP와 ABAP RAP를 학습하며 만든 개인 프로젝트입니다. 협력사 등록 요청부터 승인, SAP Business Partner 후보 조회, ERP 쓰기 시뮬레이션, 실패 재처리, ABAP RAP 승인 규칙 관리까지 하나의 업무 흐름으로 구성했습니다.
+SAP BTP CAP과 Fiori elements를 이용한 협력사 등록·승인 및 S/4HANA Business Partner 연계 프로젝트입니다.
+
+- **SAP Sandbox**: Business Partner 조회 Adapter 구현, mock/sandbox 모드 분리
+- **Mock ERP**: Business Partner 쓰기, 4xx/5xx 오류, retry, idempotency 시뮬레이션
+- **CAP**: 협력사 요청, 승인·반려, ERP 연동, Integration Log 오케스트레이션
+- **Fiori elements**: Supplier Request List Report와 Object Page annotation 구성
+- **ABAP RAP**: 승인 규칙 마스터 설계 및 코드 산출물
+- **Test**: 상태 전이, 멱등성, 오류 분류, Adapter, 운영 readiness 검증
+
+[Demo GIF](docs/screenshots/supplierflow-demo.gif) · [Architecture](docs/architecture.md) · [Execution Evidence](docs/evidence/execution-evidence.md) · [SAP Sandbox Notes](docs/evidence/sap-sandbox-verification.md) · [RAP Scope](docs/evidence/rap-scope.md)
+
+![SupplierFlow Demo](docs/screenshots/supplierflow-demo.gif)
 
 단순 CRUD 구현보다 SAP 기반 엔터프라이즈 시스템에서 중요한 **업무 프로세스 이해, 기준정보 연동, 상태 전이, 오류 복구, ABAP/BTP 확장 개발 구조**를 직접 다뤄보는 데 초점을 두었습니다. 이후 실제 SAP ERP/S/4HANA 구축·운영 프로젝트에서 다루는 산출물까지 연결하기 위해 DEV/QAS/PRD landscape, IMG 설정 후보, 권한, Transport, UAT, Cutover, 장애·변경관리, 데이터 마이그레이션 점검 자료를 추가했습니다.
 
 관련 Solution Developer 직무에서도 SAP 업무 흐름을 기술 설계와 구현으로 연결한 경험으로 설명할 수 있습니다.
+
+## Verification Status
+
+| 영역 | 현재 상태 | 증빙 |
+| --- | --- | --- |
+| CAP/OData/Fiori 로컬 실행 | 검증 완료 | `docs/screenshots/`, `docs/evidence/execution-evidence.md` |
+| 자동 테스트 | 검증 완료 | `npm test` 16개 통과 |
+| 운영 readiness 점검 | 검증 완료 | `npm run ops:check`, `docs/screenshots/04-ops-readiness-check.png` |
+| SAP Business Partner 조회 | Adapter 구현 및 mock 검증 완료 | `srv/lib/sap-bp-adapter.js`, `docs/evidence/sap-sandbox-verification.md` |
+| 실제 SAP Sandbox 호출 | 외부 API Key 필요, repo 증빙 미포함 | `docs/evidence/sap-sandbox-verification.md` |
+| ABAP RAP | 설계/코드 산출물 포함, ADT 활성화 증빙 미포함 | `abap-rap/`, `docs/evidence/rap-scope.md` |
+| 실제 S/4HANA 쓰기 | Mock ERP로 대체 | `mock-erp/`, Integration Log 처리 |
 
 ## 학습 및 구현 포인트
 
@@ -45,6 +68,12 @@ flowchart LR
 ```
 
 ## Demo Screenshots
+
+### Demo GIF
+
+Fiori 화면, CAP 서비스, OData 응답, 운영 readiness를 묶은 짧은 데모입니다.
+
+![SupplierFlow Demo](docs/screenshots/supplierflow-demo.gif)
 
 ### Fiori List Report
 
