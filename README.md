@@ -1,12 +1,12 @@
 # SupplierFlow BTP + RAP
 
-현대오토에버 **Enterprise IT - Solution Developer(SAP ABAP/BTP 개발)** 직무를 목표로 만든 SAP 개발 포트폴리오입니다. 협력사 등록 요청부터 승인, SAP Business Partner 후보 조회, ERP 쓰기 시뮬레이션, 실패 재처리, ABAP RAP 승인 규칙 관리까지 하나의 업무 흐름으로 구성했습니다.
+SAP BTP와 ABAP RAP를 학습하며 만든 개인 프로젝트입니다. 협력사 등록 요청부터 승인, SAP Business Partner 후보 조회, ERP 쓰기 시뮬레이션, 실패 재처리, ABAP RAP 승인 규칙 관리까지 하나의 업무 흐름으로 구성했습니다.
 
-이 프로젝트의 목적은 단순 CRUD 구현이 아니라, SAP 기반 엔터프라이즈 시스템에서 중요한 **업무 프로세스 이해, 기준정보 연동, 상태 전이, 오류 복구, ABAP/BTP 확장 개발 역량**을 코드와 문서로 보여주는 것입니다.
+단순 CRUD 구현보다 SAP 기반 엔터프라이즈 시스템에서 중요한 **업무 프로세스 이해, 기준정보 연동, 상태 전이, 오류 복구, ABAP/BTP 확장 개발 구조**를 직접 다뤄보는 데 초점을 두었습니다. 관련 Solution Developer 직무에서도 SAP 업무 흐름을 기술 설계와 구현으로 연결한 경험으로 설명할 수 있습니다.
 
-## 직무 연계 포인트
+## 학습 및 구현 포인트
 
-| 공고 역량 | 프로젝트에서 보여주는 내용 |
+| 관련 역량 | 프로젝트에서 다룬 내용 |
 | --- | --- |
 | SAP ABAP/BTP 개발 | SAP BTP CAP 서비스, OData V4, Fiori elements, ABAP RAP 산출물 구성 |
 | SAP ERP 업무 이해 | 협력사 기준정보 등록/승인, Business Partner 조회, ERP 반영 흐름 설계 |
@@ -60,7 +60,7 @@ flowchart LR
 - **CAP**: 협력사 요청, 승인 상태, SAP BP 후보 조회, Mock ERP 쓰기, 연동 로그, 실패 재처리 담당
 - **ABAP RAP**: 국가/협력사 유형/위험도 기준 승인 규칙 마스터 관리 담당
 
-면접에서 설명할 핵심 문장:
+프로젝트 설명 시 강조할 수 있는 핵심 문장:
 
 > CAP은 승인과 외부 연동을 오케스트레이션하고, ABAP RAP는 ERP 확장에 가까운 승인 규칙 마스터를 담당하도록 경계를 나눴습니다.
 
@@ -147,7 +147,7 @@ npm test
 6. `retrySync`로 같은 idempotency key를 사용해 재처리합니다.
 7. ABAP RAP 승인 규칙 산출물에서 Validation, Determination, Action 흐름을 설명합니다.
 
-## 이 프로젝트로 보여주고 싶은 역량
+## 이 프로젝트를 통해 다룬 역량
 
 - SAP 업무 흐름을 데이터 모델과 API로 구체화하는 능력
 - CAP, OData, Fiori 기반 BTP 애플리케이션 개발 이해
@@ -155,6 +155,6 @@ npm test
 - ERP 연동에서 필요한 오류 처리와 재처리 설계
 - 실제 구현 범위와 모의 구현 범위를 구분하는 정직한 개발 태도
 
-## Resume Line
+## Summary
 
-SAP BTP에서 CAP(Node.js)·Fiori 기반 협력사 등록/승인 시스템과 ABAP Cloud RAP 승인 규칙 앱 산출물을 설계했습니다. S/4HANA Business Partner API 조회 Adapter, Mock ERP 쓰기, 상태 전이, 멱등성, 실패 재처리, Integration Log, CDS/Behavior/OData V4/ABAP Unit 흐름을 구현했습니다.
+SAP BTP에서 CAP(Node.js)·Fiori 기반 협력사 등록/승인 시스템과 ABAP Cloud RAP 승인 규칙 앱 산출물을 설계했습니다. S/4HANA Business Partner API 조회 Adapter, Mock ERP 쓰기, 상태 전이, 멱등성, 실패 재처리, Integration Log, CDS/Behavior/OData V4/ABAP Unit 흐름을 다뤘습니다.
